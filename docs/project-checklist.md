@@ -21,7 +21,7 @@
 
 ## Auth, Tenants, And RBAC
 
-- [ ] Add authentication.
+- [x] Add authentication.
 - [x] Add Spatie Permission.
 - [x] Add tenant stubs.
 - [x] Add global super admin role.
@@ -46,7 +46,7 @@
 
 - [ ] Add services for core business logic.
 - [x] Add API Resources for frontend responses.
-- [ ] Add form requests for validation.
+- [x] Add form requests for validation.
 - [ ] Add policies for authorization.
 - [ ] Add jobs for queued work.
 - [x] Add traits for reusable model behavior where useful.
@@ -62,7 +62,7 @@
 
 ## Quality
 
-- [ ] PHPUnit auth tests.
+- [x] PHPUnit auth tests.
 - [x] PHPUnit RBAC tests.
 - [ ] PHPUnit tenant tests.
 - [ ] PHPUnit billing tests.

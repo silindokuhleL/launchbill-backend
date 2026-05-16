@@ -4,10 +4,10 @@ Base path: `/api/v1`
 
 ## Auth
 
-- `POST /auth/register`
-- `POST /auth/login`
-- `POST /auth/logout`
-- `GET /auth/me`
+- `POST /auth/register` creates an owner user, account, and API token.
+- `POST /auth/login` returns a Sanctum bearer token and authenticated user summary.
+- `POST /auth/logout` revokes the current bearer token.
+- `GET /auth/me` returns the authenticated user summary.
 
 ## Dashboard
 
