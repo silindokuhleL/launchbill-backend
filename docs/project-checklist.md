@@ -28,7 +28,7 @@
 - [x] Add tenant owner role.
 - [x] Add account/team relationships.
 - [x] Add seeders for tenants, users, roles, and dummy data.
-- [ ] Add tenant isolation tests.
+- [x] Add tenant isolation tests.
 
 ## Billing
 
