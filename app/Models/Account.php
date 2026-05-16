@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\RecordsAuditEvents;
 use Database\Factories\AccountFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,7 +22,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Account extends Model implements HasMedia
 {
     /** @use HasFactory<AccountFactory> */
-    use HasFactory, InteractsWithMedia;
+    use HasFactory, InteractsWithMedia, RecordsAuditEvents;
 
     /**
      * @return BelongsTo<User, $this>
