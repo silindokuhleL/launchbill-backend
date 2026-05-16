@@ -55,4 +55,4 @@
 - [ ] Core services have PHPUnit coverage.
 - [ ] Every core feature has a seeder or factory-backed demo data path.
 - [ ] Tenant seeders create tenants, owners, roles, and dummy billing data.
-- [ ] `ExampleController` is removed or replaced.
+- [x] `ExampleController` is removed or replaced.

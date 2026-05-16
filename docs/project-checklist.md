@@ -10,13 +10,13 @@
 
 ## Foundation
 
-- [ ] Scaffold Laravel REST API.
-- [ ] Configure MySQL.
-- [ ] Configure Redis.
-- [ ] Configure queues.
-- [ ] Configure mail.
-- [ ] Configure PHPUnit.
-- [ ] Configure request logging.
+- [x] Scaffold Laravel REST API.
+- [x] Configure MySQL environment defaults.
+- [x] Configure Redis package support and environment defaults.
+- [x] Configure queue foundation.
+- [x] Configure mail defaults.
+- [x] Configure PHPUnit.
+- [x] Configure request logging.
 - [ ] Configure audit logging.
 
 ## Auth, Tenants, And RBAC
@@ -45,12 +45,12 @@
 ## Architecture
 
 - [ ] Add services for core business logic.
-- [ ] Add API Resources for frontend responses.
+- [x] Add API Resources for frontend responses.
 - [ ] Add form requests for validation.
 - [ ] Add policies for authorization.
 - [ ] Add jobs for queued work.
 - [ ] Add traits for reusable model behavior where useful.
-- [ ] Remove or replace `ExampleController`.
+- [x] Remove or replace `ExampleController`.
 
 ## AI
 
@@ -70,4 +70,3 @@
 - [ ] PHPUnit service tests.
 - [ ] API docs updated.
 - [ ] README updated.
-
