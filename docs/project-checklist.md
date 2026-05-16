@@ -17,17 +17,17 @@
 - [x] Configure mail defaults.
 - [x] Configure PHPUnit.
 - [x] Configure request logging.
-- [ ] Configure audit logging.
+- [x] Configure audit logging.
 
 ## Auth, Tenants, And RBAC
 
 - [ ] Add authentication.
-- [ ] Add Spatie Permission.
-- [ ] Add tenant stubs.
-- [ ] Add global super admin role.
-- [ ] Add tenant owner role.
-- [ ] Add account/team relationships.
-- [ ] Add seeders for tenants, users, roles, and dummy data.
+- [x] Add Spatie Permission.
+- [x] Add tenant stubs.
+- [x] Add global super admin role.
+- [x] Add tenant owner role.
+- [x] Add account/team relationships.
+- [x] Add seeders for tenants, users, roles, and dummy data.
 - [ ] Add tenant isolation tests.
 
 ## Billing
@@ -49,7 +49,7 @@
 - [ ] Add form requests for validation.
 - [ ] Add policies for authorization.
 - [ ] Add jobs for queued work.
-- [ ] Add traits for reusable model behavior where useful.
+- [x] Add traits for reusable model behavior where useful.
 - [x] Remove or replace `ExampleController`.
 
 ## AI
@@ -63,7 +63,7 @@
 ## Quality
 
 - [ ] PHPUnit auth tests.
-- [ ] PHPUnit RBAC tests.
+- [x] PHPUnit RBAC tests.
 - [ ] PHPUnit tenant tests.
 - [ ] PHPUnit billing tests.
 - [ ] PHPUnit webhook tests.
