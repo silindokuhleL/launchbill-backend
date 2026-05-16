@@ -18,12 +18,7 @@ class AuthApiTest extends TestCase
     {
         $this->seed(DatabaseSeeder::class);
 
-        foreach ([
-            'superadmin@launchbill.test',
-            'owner@launchbill.test',
-            'billing@launchbill.test',
-            'viewer@launchbill.test',
-        ] as $email) {
+        foreach ($this->expectedAccess() as $email => $expectedAccess) {
             $this->postJson('/api/v1/auth/login', [
                 'email' => $email,
                 'password' => 'password',
@@ -42,12 +37,29 @@ class AuthApiTest extends TestCase
                             'email',
                             'accounts',
                             'global_roles',
+                            'global_permissions',
                         ],
                     ],
                 ]);
+
+            $response = $this->postJson('/api/v1/auth/login', [
+                'email' => $email,
+                'password' => 'password',
+                'device_name' => 'phpunit-access',
+            ])->assertOk();
+
+            $this->assertSame($expectedAccess['global_roles'], $response->json('data.user.global_roles'));
+            $this->assertCount($expectedAccess['account_count'], $response->json('data.user.accounts'));
+
+            if ($expectedAccess['account_count'] > 0) {
+                $this->assertSame($expectedAccess['tenant_roles'], $response->json('data.user.accounts.0.roles'));
+                $this->assertSame($expectedAccess['permission_count'], count($response->json('data.user.accounts.0.permissions')));
+            } else {
+                $this->assertSame($expectedAccess['permission_count'], count($response->json('data.user.global_permissions')));
+            }
         }
 
-        $this->assertSame(4, PersonalAccessToken::count());
+        $this->assertSame(8, PersonalAccessToken::count());
     }
 
     public function test_login_rejects_invalid_credentials(): void
@@ -119,5 +131,38 @@ class AuthApiTest extends TestCase
             'password' => 'password',
             'device_name' => 'phpunit',
         ])->json('data.token');
+    }
+
+    /**
+     * @return array<string, array{global_roles: array<int, string>, tenant_roles: array<int, string>, account_count: int, permission_count: int}>
+     */
+    private function expectedAccess(): array
+    {
+        return [
+            'superadmin@launchbill.test' => [
+                'global_roles' => ['super_admin'],
+                'tenant_roles' => [],
+                'account_count' => 0,
+                'permission_count' => 13,
+            ],
+            'owner@launchbill.test' => [
+                'global_roles' => [],
+                'tenant_roles' => ['account_owner'],
+                'account_count' => 1,
+                'permission_count' => 12,
+            ],
+            'billing@launchbill.test' => [
+                'global_roles' => [],
+                'tenant_roles' => ['billing_manager'],
+                'account_count' => 1,
+                'permission_count' => 7,
+            ],
+            'viewer@launchbill.test' => [
+                'global_roles' => [],
+                'tenant_roles' => ['viewer'],
+                'account_count' => 1,
+                'permission_count' => 4,
+            ],
+        ];
     }
 }
