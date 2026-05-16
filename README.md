@@ -9,6 +9,7 @@ LaunchBill backend owns authentication, tenant-aware accounts, RBAC, PayFast bil
 ## Core Standards
 
 - Laravel REST API.
+- Laravel Framework 13.9.0 scaffold.
 - MySQL.
 - Redis.
 - Spatie Permission for RBAC.
@@ -19,6 +20,21 @@ LaunchBill backend owns authentication, tenant-aware accounts, RBAC, PayFast bil
 - PHPUnit for core functionality.
 - Queue-backed notifications and billing work.
 - AI features that respect permissions, tenants, and auditability.
+
+## Local Setup
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan test
+```
+
+## Current API Routes
+
+- `GET /api/v1/status`
+- `GET /api/v1/me` protected by Sanctum.
 
 ## Documentation
 
@@ -32,4 +48,3 @@ LaunchBill backend owns authentication, tenant-aware accounts, RBAC, PayFast bil
 - `docs/backend/TEST_CHECKLIST.md`
 - `docs/ai-features.md`
 - `docs/project-checklist.md`
-
