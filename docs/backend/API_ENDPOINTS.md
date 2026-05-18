@@ -80,8 +80,25 @@ Subscription payload fields:
 
 ## Invoices
 
-- `GET /invoices`
-- `GET /invoices/{invoice}`
+- `GET /invoices` lists invoices for the selected account with customer and subscription summaries.
+- `GET /invoices/{invoice}` returns one selected-account invoice.
+
+Invoice response fields include:
+
+- `customer_id`
+- `subscription_id`
+- `provider_invoice_id`
+- `number`
+- `amount_due_cents`
+- `amount_paid_cents`
+- `currency`
+- `status`
+- `issued_at`
+- `due_at`
+- `paid_at`
+- `voided_at`
+- `line_items`
+- `metadata`
 
 ## Payments
 

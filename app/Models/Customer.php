@@ -54,4 +54,12 @@ class Customer extends Model
     {
         return $this->hasMany(Subscription::class);
     }
+
+    /**
+     * @return HasMany<Invoice, $this>
+     */
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }

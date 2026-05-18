@@ -52,6 +52,14 @@
 - [x] Subscription API Resource returns the expected frontend shape.
 - [ ] Subscription status changes correctly after webhook.
 
+## Invoices
+
+- [x] Invoice can be listed.
+- [x] Invoice detail can be viewed.
+- [x] Invoice routes are scoped to the active account.
+- [x] Users without `invoices.view` cannot view invoices.
+- [x] Invoice API Resource returns the expected frontend shape.
+
 ## Payments And Webhooks
 
 - [ ] Webhook signature is required.

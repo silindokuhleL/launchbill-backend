@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\Auth\AuthController;
 use App\Http\Controllers\Api\V1\Customers\CustomerController;
+use App\Http\Controllers\Api\V1\Invoices\InvoiceController;
 use App\Http\Controllers\Api\V1\Plans\PlanController;
 use App\Http\Controllers\Api\V1\Subscriptions\SubscriptionController;
 use App\Http\Controllers\Api\V1\SystemStatusController;
@@ -23,4 +24,5 @@ Route::middleware(['auth:sanctum', ResolveTenantContext::class])->prefix('v1')->
     Route::apiResource('subscriptions', SubscriptionController::class)->only(['index', 'store', 'show']);
     Route::post('/subscriptions/{subscription}/cancel', [SubscriptionController::class, 'cancel']);
     Route::post('/subscriptions/{subscription}/resume', [SubscriptionController::class, 'resume']);
+    Route::apiResource('invoices', InvoiceController::class)->only(['index', 'show']);
 });
