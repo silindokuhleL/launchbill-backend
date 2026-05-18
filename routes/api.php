@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\Auth\AuthController;
+use App\Http\Controllers\Api\V1\Plans\PlanController;
 use App\Http\Controllers\Api\V1\SystemStatusController;
 use App\Http\Middleware\ResolveTenantContext;
 use Illuminate\Support\Facades\Route;
@@ -15,4 +16,5 @@ Route::middleware(['auth:sanctum', ResolveTenantContext::class])->prefix('v1')->
     Route::get('/auth/me', [AuthController::class, 'me']);
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
+    Route::apiResource('plans', PlanController::class);
 });

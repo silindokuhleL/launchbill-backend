@@ -33,15 +33,19 @@
 ### plans
 
 - id
+- account_id
 - name
 - slug
 - description
-- price_amount
+- price_cents
 - currency
-- interval
+- billing_interval
+- trial_days
+- features
 - is_active
-- provider_price_id
+- sort_order
 - timestamps
+- soft deletes
 
 ### customers
 

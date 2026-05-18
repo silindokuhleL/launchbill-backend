@@ -18,10 +18,15 @@
 
 ## Plans
 
-- [ ] Plan can be created.
-- [ ] Plan can be updated.
+- [x] Plan can be listed.
+- [x] Plan can be created.
+- [x] Plan can be updated.
+- [x] Plan can be archived.
+- [x] Plan slug is unique per account.
+- [x] Plan routes are scoped to the active account.
+- [x] Users without `plans.manage` cannot manage plans.
 - [ ] Inactive plan cannot be used for new subscription.
-- [ ] Plan API Resource returns the expected frontend shape.
+- [x] Plan API Resource returns the expected frontend shape.
 
 ## Customers
 
@@ -51,8 +56,8 @@
 
 ## Services And Seeders
 
-- [ ] Controllers delegate core behavior to services.
-- [ ] Core services have PHPUnit coverage.
-- [ ] Every core feature has a seeder or factory-backed demo data path.
-- [ ] Tenant seeders create tenants, owners, roles, and dummy billing data.
+- [x] Controllers delegate core behavior to services.
+- [ ] Core services have direct unit coverage.
+- [x] Every core feature has a seeder or factory-backed demo data path.
+- [x] Tenant seeders create tenants, owners, roles, and dummy billing data.
 - [x] `ExampleController` is removed or replaced.
