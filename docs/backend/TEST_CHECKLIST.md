@@ -42,8 +42,14 @@
 
 ## Subscriptions
 
-- [ ] Subscription can be created.
-- [ ] Subscription can be cancelled.
+- [x] Subscription can be listed.
+- [x] Subscription can be created.
+- [x] Subscription can be cancelled.
+- [x] Subscription can be resumed.
+- [x] Subscription routes are scoped to the active account.
+- [x] Users without `subscriptions.manage` cannot manage subscriptions.
+- [x] Inactive plan cannot be used for new subscription.
+- [x] Subscription API Resource returns the expected frontend shape.
 - [ ] Subscription status changes correctly after webhook.
 
 ## Payments And Webhooks

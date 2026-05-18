@@ -58,4 +58,12 @@ class Account extends Model implements HasMedia
     {
         return $this->hasMany(Customer::class);
     }
+
+    /**
+     * @return HasMany<Subscription, $this>
+     */
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Subscription::class);
+    }
 }
