@@ -50,4 +50,12 @@ class Account extends Model implements HasMedia
     {
         return $this->hasMany(Plan::class);
     }
+
+    /**
+     * @return HasMany<Customer, $this>
+     */
+    public function customers(): HasMany
+    {
+        return $this->hasMany(Customer::class);
+    }
 }
