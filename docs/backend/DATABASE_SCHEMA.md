@@ -70,12 +70,18 @@
 - plan_id
 - provider_subscription_id
 - status
+- quantity
+- unit_price_cents
+- currency
 - starts_at
 - trial_ends_at
 - current_period_starts_at
 - current_period_ends_at
-- cancelled_at
+- canceled_at
+- ended_at
+- metadata
 - timestamps
+- soft deletes
 
 ### invoices
 

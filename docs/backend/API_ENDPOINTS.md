@@ -57,11 +57,26 @@ Customer payload fields:
 
 ## Subscriptions
 
-- `GET /subscriptions`
-- `POST /subscriptions`
-- `GET /subscriptions/{subscription}`
-- `POST /subscriptions/{subscription}/cancel`
-- `POST /subscriptions/{subscription}/resume`
+- `GET /subscriptions` lists subscriptions for the selected account with customer and plan summaries.
+- `POST /subscriptions` creates a subscription for the selected account.
+- `GET /subscriptions/{subscription}` returns one selected-account subscription.
+- `POST /subscriptions/{subscription}/cancel` cancels one selected-account subscription.
+- `POST /subscriptions/{subscription}/resume` resumes one selected-account subscription.
+
+Subscription payload fields:
+
+- `customer_id`
+- `plan_id`
+- `provider_subscription_id`
+- `status`
+- `quantity`
+- `unit_price_cents`
+- `currency`
+- `starts_at`
+- `trial_ends_at`
+- `current_period_starts_at`
+- `current_period_ends_at`
+- `metadata`
 
 ## Invoices
 
