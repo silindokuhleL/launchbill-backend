@@ -32,7 +32,7 @@
 
 ## Billing
 
-- [ ] Add plans.
+- [x] Add plans.
 - [ ] Add customers.
 - [ ] Add subscriptions.
 - [ ] Add invoices.
@@ -44,10 +44,10 @@
 
 ## Architecture
 
-- [ ] Add services for core business logic.
+- [x] Add services for core business logic.
 - [x] Add API Resources for frontend responses.
 - [x] Add form requests for validation.
-- [ ] Add policies for authorization.
+- [x] Add policies for authorization.
 - [ ] Add jobs for queued work.
 - [x] Add traits for reusable model behavior where useful.
 - [x] Remove or replace `ExampleController`.
@@ -64,9 +64,9 @@
 
 - [x] PHPUnit auth tests.
 - [x] PHPUnit RBAC tests.
-- [ ] PHPUnit tenant tests.
-- [ ] PHPUnit billing tests.
+- [x] PHPUnit tenant tests.
+- [x] PHPUnit billing tests.
 - [ ] PHPUnit webhook tests.
 - [ ] PHPUnit service tests.
-- [ ] API docs updated.
+- [x] API docs updated.
 - [ ] README updated.
