@@ -53,9 +53,14 @@
 - account_id
 - name
 - email
+- company_name
+- phone
 - provider_customer_id
 - status
+- billing_address
+- notes
 - timestamps
+- soft deletes
 
 ### subscriptions
 
