@@ -35,7 +35,7 @@
 - [x] Add plans.
 - [x] Add customers.
 - [x] Add subscriptions.
-- [ ] Add invoices.
+- [x] Add invoices.
 - [ ] Add payments.
 - [ ] Add PayFast webhook endpoint.
 - [ ] Add webhook event storage.

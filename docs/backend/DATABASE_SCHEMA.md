@@ -91,13 +91,18 @@
 - subscription_id
 - provider_invoice_id
 - number
-- amount_due
-- amount_paid
+- amount_due_cents
+- amount_paid_cents
 - currency
 - status
+- issued_at
 - due_at
 - paid_at
+- voided_at
+- line_items
+- metadata
 - timestamps
+- soft deletes
 
 ### payments
 
