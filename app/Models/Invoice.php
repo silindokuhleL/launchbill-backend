@@ -3,34 +3,33 @@
 namespace App\Models;
 
 use App\Models\Concerns\RecordsAuditEvents;
-use Database\Factories\SubscriptionFactory;
+use Database\Factories\InvoiceFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable([
     'account_id',
     'customer_id',
-    'plan_id',
-    'provider_subscription_id',
-    'status',
-    'quantity',
-    'unit_price_cents',
+    'subscription_id',
+    'provider_invoice_id',
+    'number',
+    'amount_due_cents',
+    'amount_paid_cents',
     'currency',
-    'starts_at',
-    'trial_ends_at',
-    'current_period_starts_at',
-    'current_period_ends_at',
-    'canceled_at',
-    'ended_at',
+    'status',
+    'issued_at',
+    'due_at',
+    'paid_at',
+    'voided_at',
+    'line_items',
     'metadata',
 ])]
-class Subscription extends Model
+class Invoice extends Model
 {
-    /** @use HasFactory<SubscriptionFactory> */
+    /** @use HasFactory<InvoiceFactory> */
     use HasFactory, RecordsAuditEvents, SoftDeletes;
 
     /**
@@ -41,15 +40,14 @@ class Subscription extends Model
     protected function casts(): array
     {
         return [
-            'canceled_at' => 'datetime',
-            'current_period_ends_at' => 'datetime',
-            'current_period_starts_at' => 'datetime',
-            'ended_at' => 'datetime',
+            'amount_due_cents' => 'integer',
+            'amount_paid_cents' => 'integer',
+            'due_at' => 'datetime',
+            'issued_at' => 'datetime',
+            'line_items' => 'array',
             'metadata' => 'array',
-            'quantity' => 'integer',
-            'starts_at' => 'datetime',
-            'trial_ends_at' => 'datetime',
-            'unit_price_cents' => 'integer',
+            'paid_at' => 'datetime',
+            'voided_at' => 'datetime',
         ];
     }
 
@@ -70,18 +68,10 @@ class Subscription extends Model
     }
 
     /**
-     * @return BelongsTo<Plan, $this>
+     * @return BelongsTo<Subscription, $this>
      */
-    public function plan(): BelongsTo
+    public function subscription(): BelongsTo
     {
-        return $this->belongsTo(Plan::class);
-    }
-
-    /**
-     * @return HasMany<Invoice, $this>
-     */
-    public function invoices(): HasMany
-    {
-        return $this->hasMany(Invoice::class);
+        return $this->belongsTo(Subscription::class);
     }
 }
