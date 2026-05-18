@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             DemoAccountSeeder::class,
             PlanSeeder::class,
             CustomerSeeder::class,
+            SubscriptionSeeder::class,
             AuditLogSeeder::class,
         ]);
     }

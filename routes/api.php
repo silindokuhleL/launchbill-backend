@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\Auth\AuthController;
 use App\Http\Controllers\Api\V1\Customers\CustomerController;
 use App\Http\Controllers\Api\V1\Plans\PlanController;
+use App\Http\Controllers\Api\V1\Subscriptions\SubscriptionController;
 use App\Http\Controllers\Api\V1\SystemStatusController;
 use App\Http\Middleware\ResolveTenantContext;
 use Illuminate\Support\Facades\Route;
@@ -19,4 +20,7 @@ Route::middleware(['auth:sanctum', ResolveTenantContext::class])->prefix('v1')->
     Route::get('/me', [AuthController::class, 'me']);
     Route::apiResource('plans', PlanController::class);
     Route::apiResource('customers', CustomerController::class);
+    Route::apiResource('subscriptions', SubscriptionController::class)->only(['index', 'store', 'show']);
+    Route::post('/subscriptions/{subscription}/cancel', [SubscriptionController::class, 'cancel']);
+    Route::post('/subscriptions/{subscription}/resume', [SubscriptionController::class, 'resume']);
 });
