@@ -38,11 +38,22 @@ Plan payload fields:
 
 ## Customers
 
-- `GET /customers`
-- `POST /customers`
-- `GET /customers/{customer}`
-- `PATCH /customers/{customer}`
-- `DELETE /customers/{customer}`
+- `GET /customers` lists customers for the selected account.
+- `POST /customers` creates a customer for the selected account.
+- `GET /customers/{customer}` returns one selected-account customer.
+- `PATCH /customers/{customer}` updates one selected-account customer.
+- `DELETE /customers/{customer}` archives one selected-account customer.
+
+Customer payload fields:
+
+- `name`
+- `email`
+- `company_name`
+- `phone`
+- `provider_customer_id`
+- `status`
+- `billing_address`
+- `notes`
 
 ## Subscriptions
 

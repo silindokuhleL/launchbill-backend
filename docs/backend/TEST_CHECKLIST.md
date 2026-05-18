@@ -30,9 +30,15 @@
 
 ## Customers
 
-- [ ] Customer can be created.
-- [ ] Customer can be updated.
-- [ ] Customer list is scoped to account.
+- [x] Customer can be listed.
+- [x] Customer can be created.
+- [x] Customer can be updated.
+- [x] Customer can be archived.
+- [x] Customer list is scoped to account.
+- [x] Customer detail routes are scoped to account.
+- [x] Duplicate customer email is rejected per account.
+- [x] Users without `customers.manage` cannot manage customers.
+- [x] Customer API Resource returns the expected frontend shape.
 
 ## Subscriptions
 

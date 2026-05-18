@@ -33,7 +33,7 @@
 ## Billing
 
 - [x] Add plans.
-- [ ] Add customers.
+- [x] Add customers.
 - [ ] Add subscriptions.
 - [ ] Add invoices.
 - [ ] Add payments.
