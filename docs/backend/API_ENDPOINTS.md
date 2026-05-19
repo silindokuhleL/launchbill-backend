@@ -102,8 +102,23 @@ Invoice response fields include:
 
 ## Payments
 
-- `GET /payments`
-- `GET /payments/{payment}`
+- `GET /payments` lists payments for the selected account with customer and invoice summaries.
+- `GET /payments/{payment}` returns one selected-account payment.
+
+Payment response fields include:
+
+- `invoice_id`
+- `customer_id`
+- `provider`
+- `provider_payment_id`
+- `amount_cents`
+- `currency`
+- `status`
+- `failure_reason`
+- `paid_at`
+- `failed_at`
+- `refunded_at`
+- `metadata`
 
 ## Team And Roles
 

@@ -62,6 +62,11 @@
 
 ## Payments And Webhooks
 
+- [x] Payment can be listed.
+- [x] Payment detail can be viewed.
+- [x] Payment routes are scoped to the active account.
+- [x] Users without `payments.view` cannot view payments.
+- [x] Payment API Resource returns the expected frontend shape.
 - [ ] Webhook signature is required.
 - [ ] Duplicate webhook event is ignored.
 - [ ] Paid invoice updates invoice and payment records.

@@ -109,13 +109,19 @@
 - id
 - account_id
 - invoice_id
+- customer_id
+- provider
 - provider_payment_id
-- amount
+- amount_cents
 - currency
 - status
 - failure_reason
 - paid_at
+- failed_at
+- refunded_at
+- metadata
 - timestamps
+- soft deletes
 
 ### webhook_events
 
