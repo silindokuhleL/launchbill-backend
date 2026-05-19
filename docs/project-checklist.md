@@ -40,7 +40,7 @@
 - [x] Add PayFast webhook endpoint.
 - [x] Add webhook event storage.
 - [x] Add duplicate webhook protection.
-- [ ] Add email notifications.
+- [x] Add email notifications.
 
 ## Architecture
 

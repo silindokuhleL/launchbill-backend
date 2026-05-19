@@ -56,7 +56,19 @@ Implemented behavior:
 - Uses `custom_int1` or `custom_str1` as the optional account ID scope when PayFast checkout is created.
 - Marks `COMPLETE` payments as `succeeded` and updates the matching invoice to `paid`.
 - Marks `FAILED` and `CANCELLED` payments as `failed` and stores the failure reason.
+- Sends a customer email for successful payments.
+- Sends a customer email for failed payments with the failure reason.
 - Redacts `merchant_key` and `signature` before storing webhook payload data.
+
+## Payment Email Notifications
+
+Payment email delivery is handled by `BillingNotificationService`.
+
+- `PaymentSucceededMail` is sent to the invoice customer after a PayFast `COMPLETE` webhook.
+- `PaymentFailedMail` is sent to the invoice customer after a PayFast `FAILED` or `CANCELLED` webhook.
+- Duplicate webhook events do not send duplicate emails.
+- Missing customer email addresses are skipped.
+- Production delivery depends on the configured Laravel mailer. Local defaults use the `log` mailer.
 
 Required PayFast environment values:
 
