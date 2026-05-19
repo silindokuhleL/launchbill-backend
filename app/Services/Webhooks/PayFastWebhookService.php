@@ -6,6 +6,7 @@ use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\WebhookEvent;
 use App\Services\Audit\AuditLogger;
+use App\Services\Notifications\BillingNotificationService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
@@ -13,7 +14,8 @@ class PayFastWebhookService
 {
     public function __construct(
         private readonly PayFastSignatureVerifier $signatureVerifier,
-        private readonly AuditLogger $auditLogger
+        private readonly AuditLogger $auditLogger,
+        private readonly BillingNotificationService $billingNotificationService
     ) {}
 
     /**
@@ -60,6 +62,7 @@ class PayFastWebhookService
 
             $payment = $this->upsertPayment($invoice, $payload, $providerEventId);
             $this->syncInvoice($invoice, $payment);
+            $this->sendPaymentNotification($payment, $invoice);
 
             $event->update([
                 'status' => 'processed',
@@ -136,6 +139,19 @@ class PayFastWebhookService
                 'amount_paid_cents' => 0,
                 'paid_at' => null,
             ]);
+        }
+    }
+
+    private function sendPaymentNotification(Payment $payment, Invoice $invoice): void
+    {
+        if ($payment->status === 'succeeded') {
+            $this->billingNotificationService->paymentSucceeded($payment, $invoice);
+
+            return;
+        }
+
+        if ($payment->status === 'failed') {
+            $this->billingNotificationService->paymentFailed($payment, $invoice);
         }
     }
 
