@@ -11,9 +11,23 @@ Base path: `/api/v1`
 
 ## Dashboard
 
-- `GET /dashboard/summary`
+- `GET /dashboard/summary` returns selected-account dashboard metrics for revenue, customers, plans, subscriptions, invoices, and payments.
 - `GET /dashboard/revenue`
 - `GET /dashboard/subscriptions`
+
+Dashboard summary response fields include:
+
+- `account`
+- `revenue.total_revenue_cents`
+- `revenue.pending_revenue_cents`
+- `revenue.failed_revenue_cents`
+- `revenue.outstanding_invoice_cents`
+- `revenue.active_mrr_cents`
+- `customers`
+- `plans`
+- `subscriptions`
+- `invoices`
+- `payments`
 
 ## Plans
 

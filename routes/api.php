@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\Auth\AuthController;
 use App\Http\Controllers\Api\V1\Customers\CustomerController;
+use App\Http\Controllers\Api\V1\Dashboard\DashboardSummaryController;
 use App\Http\Controllers\Api\V1\Invoices\InvoiceController;
 use App\Http\Controllers\Api\V1\Payments\PaymentController;
 use App\Http\Controllers\Api\V1\Plans\PlanController;
@@ -22,6 +23,7 @@ Route::middleware(['auth:sanctum', ResolveTenantContext::class])->prefix('v1')->
     Route::get('/auth/me', [AuthController::class, 'me']);
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
+    Route::get('/dashboard/summary', DashboardSummaryController::class);
     Route::apiResource('plans', PlanController::class);
     Route::apiResource('customers', CustomerController::class);
     Route::apiResource('subscriptions', SubscriptionController::class)->only(['index', 'store', 'show']);
