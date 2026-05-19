@@ -132,8 +132,19 @@ Payment response fields include:
 
 ## Webhooks
 
-- `POST /webhooks/payfast`
+- `POST /webhooks/payfast` accepts PayFast ITN callbacks, verifies the signature, stores the event, ignores duplicate `pf_payment_id` values, and updates matching invoices/payments.
 - `POST /webhooks/stripe` if Stripe is added later.
+
+PayFast webhook response fields include:
+
+- `provider`
+- `provider_event_id`
+- `type`
+- `status`
+- `duplicate`
+- `processed_at`
+- `failed_at`
+- `failure_reason`
 
 ## Audit
 

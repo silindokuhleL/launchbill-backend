@@ -67,11 +67,11 @@
 - [x] Payment routes are scoped to the active account.
 - [x] Users without `payments.view` cannot view payments.
 - [x] Payment API Resource returns the expected frontend shape.
-- [ ] Webhook signature is required.
-- [ ] Duplicate webhook event is ignored.
-- [ ] Paid invoice updates invoice and payment records.
-- [ ] Failed payment stores failure reason.
-- [ ] PayFast webhook payload is verified before processing.
+- [x] Webhook signature is required.
+- [x] Duplicate webhook event is ignored.
+- [x] Paid invoice updates invoice and payment records.
+- [x] Failed payment stores failure reason.
+- [x] PayFast webhook payload is verified before processing.
 
 ## Dashboard
 
@@ -82,6 +82,7 @@
 ## Services And Seeders
 
 - [x] Controllers delegate core behavior to services.
+- [x] Core webhook service behavior has feature coverage.
 - [ ] Core services have direct unit coverage.
 - [x] Every core feature has a seeder or factory-backed demo data path.
 - [x] Tenant seeders create tenants, owners, roles, and dummy billing data.

@@ -35,12 +35,34 @@ If Stripe is added later:
 
 ## Webhook Rules
 
-- Verify provider signature.
+- Verify the PayFast signature before creating local records.
+- Build the PayFast signature from the received fields, excluding `signature`, ignoring empty values, URL-encoding trimmed values, appending `passphrase` when configured, and comparing the lowercase MD5 hash.
 - Store webhook event before processing.
-- Ignore duplicate provider event IDs.
+- Ignore duplicate provider event IDs and return the stored event response.
 - Process subscription and invoice changes inside database transactions where needed.
 - Log failures clearly.
 - Never trust frontend payment status.
+
+## Current PayFast Endpoint
+
+`POST /api/v1/webhooks/payfast`
+
+Implemented behavior:
+
+- Rejects missing or invalid signatures with `422`.
+- Stores accepted events in `webhook_events`.
+- Uses `pf_payment_id` as the provider event ID, falling back to `m_payment_id` or a payload hash.
+- Uses `m_payment_id` as the local invoice number.
+- Uses `custom_int1` or `custom_str1` as the optional account ID scope when PayFast checkout is created.
+- Marks `COMPLETE` payments as `succeeded` and updates the matching invoice to `paid`.
+- Marks `FAILED` and `CANCELLED` payments as `failed` and stores the failure reason.
+- Redacts `merchant_key` and `signature` before storing webhook payload data.
+
+Required PayFast environment values:
+
+- `PAYFAST_MERCHANT_ID`
+- `PAYFAST_MERCHANT_KEY`
+- `PAYFAST_PASSPHRASE`
 
 ## Portfolio Proof
 
