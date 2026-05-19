@@ -72,9 +72,10 @@
 - [x] Paid invoice updates invoice and payment records.
 - [x] Failed payment stores failure reason.
 - [x] PayFast webhook payload is verified before processing.
-- [x] Successful PayFast payment sends a customer email.
-- [x] Failed PayFast payment sends a customer email.
-- [x] Duplicate webhook event does not send duplicate emails.
+- [x] Successful PayFast payment queues a customer email.
+- [x] Failed PayFast payment queues a customer email.
+- [x] Queued payment email jobs send customer emails.
+- [x] Duplicate webhook event does not queue duplicate emails.
 
 ## Dashboard
 
@@ -86,6 +87,7 @@
 
 - [x] Controllers delegate core behavior to services.
 - [x] Core webhook service behavior has feature coverage.
+- [x] Queued payment email jobs have feature coverage.
 - [ ] Core services have direct unit coverage.
 - [x] Every core feature has a seeder or factory-backed demo data path.
 - [x] Tenant seeders create tenants, owners, roles, and dummy billing data.
