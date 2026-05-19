@@ -7,12 +7,19 @@ Use background jobs for tasks that should not slow down API responses.
 ## Suggested Jobs
 
 - Send welcome email.
-- Send invoice paid email. Current foundation sends this inline from webhook processing; move to a queued job when production mail delivery is configured.
-- Send payment failed email. Current foundation sends this inline from webhook processing; move to a queued job when production mail delivery is configured.
+- Send invoice paid email. Implemented as `SendPaymentSucceededEmail`.
+- Send payment failed email. Implemented as `SendPaymentFailedEmail`.
 - Sync payment provider subscription state.
 - Generate billing report.
 - Process webhook event.
 - Write audit log if not handled inline.
+
+## Implemented Jobs
+
+- `SendPaymentSucceededEmail` sends `PaymentSucceededMail` to the invoice customer.
+- `SendPaymentFailedEmail` sends `PaymentFailedMail` to the invoice customer.
+- `BillingNotificationService` dispatches these jobs from PayFast webhook processing.
+- Missing customer email addresses are skipped inside the job.
 
 ## Queue Rules
 

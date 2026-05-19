@@ -48,7 +48,7 @@
 - [x] Add API Resources for frontend responses.
 - [x] Add form requests for validation.
 - [x] Add policies for authorization.
-- [ ] Add jobs for queued work.
+- [x] Add jobs for queued work.
 - [x] Add traits for reusable model behavior where useful.
 - [x] Remove or replace `ExampleController`.
 
