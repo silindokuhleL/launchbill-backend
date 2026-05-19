@@ -7,8 +7,8 @@ Use background jobs for tasks that should not slow down API responses.
 ## Suggested Jobs
 
 - Send welcome email.
-- Send invoice paid email.
-- Send payment failed email.
+- Send invoice paid email. Current foundation sends this inline from webhook processing; move to a queued job when production mail delivery is configured.
+- Send payment failed email. Current foundation sends this inline from webhook processing; move to a queued job when production mail delivery is configured.
 - Sync payment provider subscription state.
 - Generate billing report.
 - Process webhook event.
@@ -24,4 +24,3 @@ Use background jobs for tasks that should not slow down API responses.
 ## Portfolio Proof
 
 Show that the project understands asynchronous work, not just request-response CRUD.
-

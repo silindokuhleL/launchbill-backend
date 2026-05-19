@@ -72,6 +72,9 @@
 - [x] Paid invoice updates invoice and payment records.
 - [x] Failed payment stores failure reason.
 - [x] PayFast webhook payload is verified before processing.
+- [x] Successful PayFast payment sends a customer email.
+- [x] Failed PayFast payment sends a customer email.
+- [x] Duplicate webhook event does not send duplicate emails.
 
 ## Dashboard
 
