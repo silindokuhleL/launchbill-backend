@@ -36,7 +36,7 @@
 - [x] Add customers.
 - [x] Add subscriptions.
 - [x] Add invoices.
-- [ ] Add payments.
+- [x] Add payments.
 - [ ] Add PayFast webhook endpoint.
 - [ ] Add webhook event storage.
 - [ ] Add duplicate webhook protection.

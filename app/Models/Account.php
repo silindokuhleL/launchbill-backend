@@ -74,4 +74,12 @@ class Account extends Model implements HasMedia
     {
         return $this->hasMany(Invoice::class);
     }
+
+    /**
+     * @return HasMany<Payment, $this>
+     */
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
 }
