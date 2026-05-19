@@ -3,34 +3,31 @@
 namespace App\Models;
 
 use App\Models\Concerns\RecordsAuditEvents;
-use Database\Factories\InvoiceFactory;
+use Database\Factories\PaymentFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable([
     'account_id',
+    'invoice_id',
     'customer_id',
-    'subscription_id',
-    'provider_invoice_id',
-    'number',
-    'amount_due_cents',
-    'amount_paid_cents',
+    'provider',
+    'provider_payment_id',
+    'amount_cents',
     'currency',
     'status',
-    'issued_at',
-    'due_at',
+    'failure_reason',
     'paid_at',
-    'voided_at',
-    'line_items',
+    'failed_at',
+    'refunded_at',
     'metadata',
 ])]
-class Invoice extends Model
+class Payment extends Model
 {
-    /** @use HasFactory<InvoiceFactory> */
+    /** @use HasFactory<PaymentFactory> */
     use HasFactory, RecordsAuditEvents, SoftDeletes;
 
     /**
@@ -41,14 +38,11 @@ class Invoice extends Model
     protected function casts(): array
     {
         return [
-            'amount_due_cents' => 'integer',
-            'amount_paid_cents' => 'integer',
-            'due_at' => 'datetime',
-            'issued_at' => 'datetime',
-            'line_items' => 'array',
+            'amount_cents' => 'integer',
+            'failed_at' => 'datetime',
             'metadata' => 'array',
             'paid_at' => 'datetime',
-            'voided_at' => 'datetime',
+            'refunded_at' => 'datetime',
         ];
     }
 
@@ -69,18 +63,10 @@ class Invoice extends Model
     }
 
     /**
-     * @return BelongsTo<Subscription, $this>
+     * @return BelongsTo<Invoice, $this>
      */
-    public function subscription(): BelongsTo
+    public function invoice(): BelongsTo
     {
-        return $this->belongsTo(Subscription::class);
-    }
-
-    /**
-     * @return HasMany<Payment, $this>
-     */
-    public function payments(): HasMany
-    {
-        return $this->hasMany(Payment::class);
+        return $this->belongsTo(Invoice::class);
     }
 }

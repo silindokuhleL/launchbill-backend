@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             CustomerSeeder::class,
             SubscriptionSeeder::class,
             InvoiceSeeder::class,
+            PaymentSeeder::class,
             AuditLogSeeder::class,
         ]);
     }
