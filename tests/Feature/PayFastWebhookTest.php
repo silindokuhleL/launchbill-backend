@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Mail\PaymentFailedMail;
+use App\Mail\PaymentSucceededMail;
 use App\Models\Account;
 use App\Models\Invoice;
 use App\Models\Payment;
@@ -9,6 +11,7 @@ use App\Models\WebhookEvent;
 use App\Services\Webhooks\PayFastSignatureVerifier;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class PayFastWebhookTest extends TestCase
@@ -20,6 +23,7 @@ class PayFastWebhookTest extends TestCase
         parent::setUp();
 
         config(['services.payfast.passphrase' => 'launchbill-secret']);
+        Mail::fake();
     }
 
     public function test_payfast_webhook_rejects_invalid_signature(): void
@@ -39,6 +43,7 @@ class PayFastWebhookTest extends TestCase
             'provider' => 'payfast',
             'provider_event_id' => 'pf_invalid_signature',
         ]);
+        Mail::assertNothingSent();
     }
 
     public function test_payfast_webhook_stores_event_and_marks_invoice_paid(): void
@@ -81,6 +86,13 @@ class PayFastWebhookTest extends TestCase
         $this->assertSame('processed', $event->status);
         $this->assertArrayNotHasKey('signature', $event->payload);
         $this->assertArrayNotHasKey('merchant_key', $event->payload);
+
+        Mail::assertSent(
+            PaymentSucceededMail::class,
+            fn (PaymentSucceededMail $mail): bool => $mail->hasTo('thabo@greenledger.example')
+                && $mail->invoice->is($invoice)
+                && $mail->payment->provider_payment_id === 'pf_test_greenledger_paid'
+        );
     }
 
     public function test_duplicate_payfast_webhook_returns_existing_event_without_reprocessing(): void
@@ -106,6 +118,7 @@ class PayFastWebhookTest extends TestCase
 
         $this->assertSame(1, WebhookEvent::where('provider_event_id', 'pf_test_duplicate_paid')->count());
         $this->assertSame(1, Payment::where('provider_payment_id', 'pf_test_duplicate_paid')->count());
+        Mail::assertSent(PaymentSucceededMail::class, 1);
     }
 
     public function test_failed_payfast_webhook_stores_failure_reason(): void
@@ -139,6 +152,14 @@ class PayFastWebhookTest extends TestCase
         $this->assertSame('overdue', $invoice->status);
         $this->assertSame(0, $invoice->amount_paid_cents);
         $this->assertNull($invoice->paid_at);
+
+        Mail::assertSent(
+            PaymentFailedMail::class,
+            fn (PaymentFailedMail $mail): bool => $mail->hasTo('aisha@brightops.example')
+                && $mail->invoice->is($invoice)
+                && $mail->payment->provider_payment_id === 'pf_test_brightops_failed'
+                && $mail->payment->failure_reason === 'Insufficient funds'
+        );
     }
 
     /**
