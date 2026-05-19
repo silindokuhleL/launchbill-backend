@@ -37,9 +37,9 @@
 - [x] Add subscriptions.
 - [x] Add invoices.
 - [x] Add payments.
-- [ ] Add PayFast webhook endpoint.
-- [ ] Add webhook event storage.
-- [ ] Add duplicate webhook protection.
+- [x] Add PayFast webhook endpoint.
+- [x] Add webhook event storage.
+- [x] Add duplicate webhook protection.
 - [ ] Add email notifications.
 
 ## Architecture
@@ -66,7 +66,7 @@
 - [x] PHPUnit RBAC tests.
 - [x] PHPUnit tenant tests.
 - [x] PHPUnit billing tests.
-- [ ] PHPUnit webhook tests.
+- [x] PHPUnit webhook tests.
 - [ ] PHPUnit service tests.
 - [x] API docs updated.
 - [ ] README updated.

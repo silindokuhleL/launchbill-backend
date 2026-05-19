@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\V1\Payments\PaymentController;
 use App\Http\Controllers\Api\V1\Plans\PlanController;
 use App\Http\Controllers\Api\V1\Subscriptions\SubscriptionController;
 use App\Http\Controllers\Api\V1\SystemStatusController;
+use App\Http\Controllers\Api\V1\Webhooks\PayFastWebhookController;
 use App\Http\Middleware\ResolveTenantContext;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ Route::prefix('v1')->group(function (): void {
     Route::get('/status', SystemStatusController::class);
     Route::post('/auth/register', [AuthController::class, 'register']);
     Route::post('/auth/login', [AuthController::class, 'login']);
+    Route::post('/webhooks/payfast', PayFastWebhookController::class);
 });
 
 Route::middleware(['auth:sanctum', ResolveTenantContext::class])->prefix('v1')->group(function (): void {

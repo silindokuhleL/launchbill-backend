@@ -130,10 +130,17 @@
 - provider_event_id
 - type
 - payload
+- status
 - processed_at
 - failed_at
 - failure_reason
 - timestamps
+
+Indexes and constraints:
+
+- Unique provider event: `provider`, `provider_event_id`
+- Provider status lookup: `provider`, `status`
+- Event type lookup: `type`
 
 ### audit_logs
 

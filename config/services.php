@@ -28,6 +28,12 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'payfast' => [
+        'merchant_id' => env('PAYFAST_MERCHANT_ID'),
+        'merchant_key' => env('PAYFAST_MERCHANT_KEY'),
+        'passphrase' => env('PAYFAST_PASSPHRASE'),
+    ],
+
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
