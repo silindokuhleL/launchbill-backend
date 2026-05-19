@@ -37,6 +37,7 @@
 - [x] Add subscriptions.
 - [x] Add invoices.
 - [x] Add payments.
+- [x] Add dashboard summary metrics.
 - [x] Add PayFast webhook endpoint.
 - [x] Add webhook event storage.
 - [x] Add duplicate webhook protection.

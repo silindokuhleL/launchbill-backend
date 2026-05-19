@@ -79,9 +79,10 @@
 
 ## Dashboard
 
-- [ ] Dashboard summary returns scoped account totals.
-- [ ] Revenue totals exclude failed payments.
-- [ ] Subscription counts reflect current statuses.
+- [x] Dashboard summary returns scoped account totals.
+- [x] Revenue totals exclude failed payments.
+- [x] Subscription counts reflect current statuses.
+- [x] Dashboard summary requires `dashboard.view`.
 
 ## Services And Seeders
 
